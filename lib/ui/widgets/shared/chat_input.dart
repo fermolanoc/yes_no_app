@@ -5,6 +5,9 @@ class ChatInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textController = TextEditingController();
+    final FocusNode focusNode = FocusNode();
+
     final outlineInputBorder = UnderlineInputBorder(
         borderRadius: BorderRadius.circular(20),
         borderSide: const BorderSide(
@@ -18,15 +21,26 @@ class ChatInput extends StatelessWidget {
       hintText: 'Type a message',
       suffixIcon: IconButton(
         icon: const Icon(Icons.send),
-        onPressed: () {},
+        onPressed: () {
+          final textValue = textController.text;
+          textController.clear();
+        },
       ),
     );
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       child: TextFormField(
+        focusNode: focusNode,
+        controller: textController,
         decoration: inputDecoration,
-        onFieldSubmitted: (value) {},
+        onFieldSubmitted: (value) {
+          textController.clear();
+          focusNode.requestFocus();
+        },
+        onTapOutside: (event) {
+          focusNode.unfocus();
+        },
       ),
     );
   }
