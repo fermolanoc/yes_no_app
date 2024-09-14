@@ -12,7 +12,7 @@ class MyMessageBubble extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-            color: colors.secondary, borderRadius: BorderRadius.circular(20)),
+            color: colors.onPrimary, borderRadius: BorderRadius.circular(20)),
         child: const Text(
           'Hello, how are you?',
           style: TextStyle(color: Colors.white),
