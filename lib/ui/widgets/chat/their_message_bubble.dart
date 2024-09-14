@@ -42,7 +42,7 @@ class _ImageBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final src = index % 2 == 0
-        ? 'https://yesno.wtf/assets/yes/15-3d723ea13af91839a671d4791fc53dcc.gif'
+        ? 'https://yesno.wtf/assets/yes/7-653c8ee5d3a6bbafd759142c9c18d76c.gif'
         : 'https://yesno.wtf/assets/no/14-cb78bf7104f848794808d61b9cd83eba.gif';
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
@@ -51,6 +51,17 @@ class _ImageBubble extends StatelessWidget {
         width: size.width * 0.5,
         height: size.height * 0.2,
         fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) =>
+            loadingProgress == null
+                ? child
+                : Container(
+                    alignment: Alignment.centerLeft,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    width: size.width * 0.5,
+                    height: size.height * 0.2,
+                    child: const Text('Wife ❤️ is typing...'),
+                  ),
       ),
     );
   }
