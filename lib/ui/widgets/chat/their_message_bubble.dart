@@ -17,11 +17,13 @@ class TheirMessageBubble extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
                 color: colors.primary, borderRadius: BorderRadius.circular(20)),
-            child: const Text(
+            child: Text(
               textAlign: TextAlign.left,
               'Hello, how are you?',
               style: TextStyle(
-                color: Colors.black,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.black
+                    : Colors.white,
               ),
             ),
           ),

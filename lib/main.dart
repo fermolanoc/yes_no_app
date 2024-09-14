@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: AppTheme(selectedColor: 5, brightness: Brightness.dark).theme(),
+        theme: AppTheme(selectedColor: 1, brightness: Brightness.dark).theme(),
         home: Scaffold(
           appBar: AppBar(
             title: const Text('Yes - No App'),
