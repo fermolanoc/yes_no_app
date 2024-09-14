@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yes_no_app/ui/widgets/chat/my_message_bubble.dart';
 import 'package:yes_no_app/ui/widgets/chat/their_message_bubble.dart';
+import 'package:yes_no_app/ui/widgets/shared/chat_input.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -42,7 +43,7 @@ class _ChatView extends StatelessWidget {
               ),
             ),
             const Divider(height: 1),
-            // _ChatInput(),
+            const ChatInput(),
           ],
         ),
       ),
