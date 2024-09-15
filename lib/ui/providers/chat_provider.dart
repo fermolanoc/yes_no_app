@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:yes_no_app/domain/entities/message.dart';
 
@@ -16,8 +18,7 @@ class ChatProvider extends ChangeNotifier {
   }
 
   Future<void> addTheirMessage() async {
-    final random =
-        (1 + (2 - 1) * (DateTime.now().millisecondsSinceEpoch % 2)).toInt();
+    final random = Random().nextInt(2); // 0 or 1, 0 is no, 1 is yes
 
     await Future.delayed(const Duration(seconds: 1));
     messagesList
