@@ -1,4 +1,4 @@
-enum Sender { me, their }
+enum Sender { me, them }
 
 class Message {
   final String text;

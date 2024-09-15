@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class TheirMessageBubble extends StatelessWidget {
-  final int idx;
-  const TheirMessageBubble({super.key, required this.idx});
+  final Message message;
+  const TheirMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class TheirMessageBubble extends StatelessWidget {
                 color: colors.primary, borderRadius: BorderRadius.circular(20)),
             child: Text(
               textAlign: TextAlign.left,
-              'Hello, how are you?',
+              message.text,
               style: TextStyle(
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Colors.black
@@ -28,7 +29,7 @@ class TheirMessageBubble extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          _ImageBubble(index: idx),
+          _ImageBubble(response: message.text),
         ],
       ),
     );
@@ -37,13 +38,13 @@ class TheirMessageBubble extends StatelessWidget {
 
 // ignore: unused_element
 class _ImageBubble extends StatelessWidget {
-  final int index;
-  const _ImageBubble({required this.index});
+  final String response;
+  const _ImageBubble({required this.response});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final src = index % 2 == 0
+    final src = response == 'yes'
         ? 'https://yesno.wtf/assets/yes/7-653c8ee5d3a6bbafd759142c9c18d76c.gif'
         : 'https://yesno.wtf/assets/no/14-cb78bf7104f848794808d61b9cd83eba.gif';
     return ClipRRect(

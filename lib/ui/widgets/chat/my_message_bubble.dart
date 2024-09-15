@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class MyMessageBubble extends StatelessWidget {
-  const MyMessageBubble({super.key});
+  final Message message;
+
+  const MyMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
+
     bool isDarkMode = theme.brightness == Brightness.dark;
     return Align(
       alignment: Alignment.centerRight,
@@ -16,9 +20,9 @@ class MyMessageBubble extends StatelessWidget {
         decoration: BoxDecoration(
             color: isDarkMode ? colors.onPrimary : colors.secondary,
             borderRadius: BorderRadius.circular(20)),
-        child: const Text(
-          'Hello, how are you?',
-          style: TextStyle(color: Colors.white),
+        child: Text(
+          message.text,
+          style: const TextStyle(color: Colors.white),
         ),
       ),
     );
