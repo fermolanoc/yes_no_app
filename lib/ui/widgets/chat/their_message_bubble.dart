@@ -29,7 +29,7 @@ class TheirMessageBubble extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          _ImageBubble(response: message.text),
+          _ImageBubble(response: message),
         ],
       ),
     );
@@ -38,19 +38,19 @@ class TheirMessageBubble extends StatelessWidget {
 
 // ignore: unused_element
 class _ImageBubble extends StatelessWidget {
-  final String response;
+  final Message response;
   const _ImageBubble({required this.response});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final src = response == 'yes'
+    final src = response.text == 'yes'
         ? 'https://yesno.wtf/assets/yes/7-653c8ee5d3a6bbafd759142c9c18d76c.gif'
         : 'https://yesno.wtf/assets/no/14-cb78bf7104f848794808d61b9cd83eba.gif';
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-        src,
+        response.imageUrl ?? src,
         width: size.width * 0.5,
         height: size.height * 0.2,
         fit: BoxFit.cover,

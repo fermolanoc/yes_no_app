@@ -1,10 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/config/helpers/get_yes_no_answer.dart';
 import 'package:yes_no_app/domain/entities/message.dart';
 
 class ChatProvider extends ChangeNotifier {
   final ScrollController chatScrollController = ScrollController();
+  final GetYesNoAnswer getYesNoAnswer = GetYesNoAnswer();
+
   List<Message> messagesList = [];
 
   Future<void> sendMessage(String text) async {
@@ -20,11 +23,13 @@ class ChatProvider extends ChangeNotifier {
   }
 
   Future<void> addTheirMessage() async {
-    final random = Random().nextInt(2); // 0 or 1, 0 is no, 1 is yes
+    final theirMessage = await getYesNoAnswer.getAnswer();
 
     await Future.delayed(const Duration(seconds: 1));
-    messagesList
-        .add(Message(text: random == 1 ? 'yes' : 'no', sender: Sender.them));
+    messagesList.add(Message(
+        text: theirMessage.text,
+        imageUrl: theirMessage.imageUrl,
+        sender: Sender.them));
     notifyListeners();
     moveScrollToBottom();
   }
