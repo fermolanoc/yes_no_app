@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:yes_no_app/ui/providers/chat_provider.dart';
-import 'package:yes_no_app/ui/screens/chat/chat_screen.dart';
 
 class ChatInput extends StatelessWidget {
   const ChatInput({super.key});
